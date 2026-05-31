@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Loops and Arrays</title>
+</head>
+<body>
+
+    <h1>JavaScript Loops and Arrays</h1>
+
+    <h2>For Loop: Odd or Even</h2>
+    <div id="forLoopOutput"></div>
+
+    <h2>Do While Loop</h2>
+    <div id="doWhileOutput"></div>
+
+    <h2>Subjects Array using forEach()</h2>
+    <div id="arrayOutput"></div>
+
+    <h2>Array Values Separated by Commas</h2>
+    <div id="commaOutput"></div>
+
+    <script>
+        // For loop that counts from 0 to 10 and checks odd or even
+        let forLoopText = "";
+
+        for (let i = 0; i <= 10; i++) {
+            if (i % 2 === 0) {
+                forLoopText += "Count " + i + " is even<br>";
+            } else {
+                forLoopText += "Count " + i + " is odd<br>";
+            }
+        }
+
+        document.getElementById("forLoopOutput").innerHTML = forLoopText;
+
+
+        // Ask user for a number between 5 and 20
+        let myNum = parseInt(prompt("Enter a number between 5 and 20:"));
+
+        while (myNum < 5 || myNum > 20 || isNaN(myNum)) {
+            myNum = parseInt(prompt("Please enter a valid number between 5 and 20:"));
+        }
+
+        // Do while loop that counts until counter equals myNum
+        let counter = 1;
+        let doWhileText = "";
+
+        do {
+            doWhileText += "Counter is: " + counter + "<br>";
+            counter++;
+        } while (counter <= myNum);
+
+        document.getElementById("doWhileOutput").innerHTML = doWhileText;
+
+
+        // Store subjects in an array
+        let subjects = ["Accounting", "Algebra", "Programming", "Art", "Data Analytics"];
+
+        // Display array values using forEach()
+        let arrayText = "";
+
+        subjects.forEach(function(subject) {
+            arrayText += subject + "<br>";
+        });
+
+        document.getElementById("arrayOutput").innerHTML = arrayText;
+
+
+        // Display array values separated by commas using one statement
+        document.getElementById("commaOutput").innerHTML = subjects.join(", ");
+    </script>
+
+</body>
+</html>

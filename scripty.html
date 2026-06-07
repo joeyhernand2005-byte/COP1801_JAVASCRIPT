@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tip Calculator</title>
+</head>
+<body>
+
+  <h1>Tip Calculator</h1>
+
+  <script>
+    // ask for the service amount
+    let serviceAmount = parseFloat(prompt("Enter the dollar amount of the service:"));
+
+    // ask for service quality
+    let serviceQuality = prompt("Enter the service quality: great, ok, or poor").toLowerCase();
+
+    // function to check if service quality is valid
+    function validateQuality(quality) {
+      if (quality === "great" || quality === "ok" || quality === "poor") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    // function to check if service amount is valid
+    function validateAmount(amount) {
+      if (amount >= 5 && amount <= 500) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    // function to calculate the tip
+    function calculateTip(amount, quality) {
+      let tipRate;
+
+      if (quality === "great") {
+        tipRate = 0.20;
+      } else if (quality === "ok") {
+        tipRate = 0.15;
+      } else if (quality === "poor") {
+        tipRate = 0.10;
+      }
+
+      return amount * tipRate;
+    }
+
+    // validate input and display result
+    if (!validateAmount(serviceAmount)) {
+      document.write("<p>Invalid service amount. Please enter an amount between $5.00 and $500.00.</p>");
+    } else if (!validateQuality(serviceQuality)) {
+      document.write("<p>Invalid service quality. Please enter great, ok, or poor.</p>");
+    } else {
+      let tipAmount = calculateTip(serviceAmount, serviceQuality);
+
+      document.write("<h2>Tip Recommendation</h2>");
+      document.write("<p>Service amount: $" + serviceAmount.toFixed(2) + "</p>");
+      document.write("<p>Service quality: " + serviceQuality + "</p>");
+      document.write("<p>Recommended tip: $" + tipAmount.toFixed(2) + "</p>");
+    }
+  </script>
+
+</body>
+</html>

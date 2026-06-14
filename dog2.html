@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    
+
+    <p id="dogList"></p>
+    <p id="selectedDog"></p>
+
+    <script>
+        // constructor function for creating dog objects
+        function Dog(name, mySound, tvShow, character, description, canTalk) {
+            this.name = name;
+            this.mySound = mySound;
+            this.tvShow = tvShow;
+            this.character = character;
+            this.description = description;
+            this.canTalk = canTalk;
+
+            // method that displays the dog greeting
+            this.myGreeting = function() {
+                let talkMessage;
+
+                // conditional statement to check if the dog can talk
+                if (this.canTalk === true) {
+                    talkMessage = "I can talk!";
+                } else {
+                    talkMessage = "I cannot talk.";
+                }
+
+                return "Hello, my name is " + this.name +
+                    ". When I bark, " + this.mySound +
+                    ". I starred in the TV show " + this.tvShow +
+                    ". My character was a " + this.character +
+                    ". I was " + this.description +
+                    ". " + talkMessage;
+            };
+        }
+
+        // create multiple fictional dog objects
+        const dog1 = new Dog(
+            "Naga",
+            "I sound big and powerful, but I am loyal and protective",
+            "The Legend of Korra",
+            "Polar Bear Dog",
+            "Avatar Korra's Polar Bear dog, best friend, and main source of transportation as she fights to restore balance to the world",
+            false
+        );
+
+        const dog2 = new Dog(
+            "Scooby-Doo",
+            "I sound silly and scared, but I am brave when my friends need me",
+            "Scooby-Doo",
+            "Great Dane",
+            "a mystery-solving dog who helps his friends investigate ghosts and monsters",
+            true
+        );
+
+        const dog3 = new Dog(
+            "Blue",
+            "I sound friendly and playful because I love helping people solve clues",
+            "Blue's Clues",
+            "Blue Puppy",
+            "a blue puppy who leaves paw prints as clues for the viewer to solve",
+            false
+        );
+
+        // put the dog objects into an array
+        const dogs = [dog1, dog2, dog3];
+
+        // display each dog name in a list
+        let dogNames = "Choose one of these dogs: ";
+
+        for (let i = 0; i < dogs.length; i++) {
+            dogNames += dogs[i].name;
+
+            if (i < dogs.length - 1) {
+                dogNames += ", ";
+            }
+        }
+
+        document.getElementById("dogList").innerHTML = dogNames;
+
+        // prompt the user to select a dog
+        const userChoice = prompt("Type the name of one dog: Naga, Scooby-Doo, or Blue");
+
+        let foundDog = false;
+
+        // search through the array for the selected dog
+        for (let i = 0; i < dogs.length; i++) {
+            if (userChoice.toLowerCase() === dogs[i].name.toLowerCase()) {
+                document.getElementById("selectedDog").innerHTML = dogs[i].myGreeting();
+                foundDog = true;
+            }
+        }
+
+        // display an error message if the dog does not exist
+        if (foundDog === false) {
+            document.getElementById("selectedDog").innerHTML =
+                "Error: The dog you selected does not exist in the list.";
+        }
+    </script>
+</body>
+</html>

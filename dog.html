@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    
+
+    <p id="literalDog"></p>
+    <p id="constructorDog"></p>
+
+    <script>
+        // literal object for my favorite fictional dog
+        const myDog = {
+            name: "Naga",
+            mySound: "I sound big and powerful, but I am loyal and protective",
+            tvShow: "The Legend of Korra",
+            character: "Polar Bear Dog",
+            description: "Avatar Korra's Polar Bear dog, best friend, and main source of transportation as she fights to restore balance to the world"
+        };
+
+        // display the literal object message
+        document.getElementById("literalDog").innerHTML =
+            "Hello, my name is " + myDog.name +
+            ", when I bark " + myDog.mySound +
+            ". I starred in the TV show " + myDog.tvShow +
+            ". My character was a " + myDog.character +
+            ". I was " + myDog.description + ".";
+
+
+        // constructor for creating dog objects
+        function Dog(name, mySound, tvShow, character, description, canTalk) {
+            this.name = name;
+            this.mySound = mySound;
+            this.tvShow = tvShow;
+            this.character = character;
+            this.description = description;
+            this.canTalk = canTalk;
+
+            // method that displays the greeting
+            this.myGreeting = function() {
+                return "Hello, my name is " + this.name +
+                    ", when I bark " + this.mySound +
+                    ". I starred in the TV show " + this.tvShow +
+                    ". My character was a " + this.character +
+                    ". I was " + this.description + ".";
+            };
+        }
+
+        // create object using constructor
+        const myDogConst = new Dog(
+            "Naga",
+            "I sound big and powerful, but I am loyal and protective",
+            "The Legend of Korra",
+            "Polar Bear Dog",
+            "Avatar Korra's Polar Bear dog, best friend, and main source of transportation as she fights to restore balance to the world",
+            false
+        );
+
+        // call the object's method and display it
+        document.getElementById("constructorDog").innerHTML = myDogConst.myGreeting();
+    </script>
+</body>
+</html>
